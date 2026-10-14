@@ -1,0 +1,10 @@
+# Local workspace and application state
+.DS_Store
+/.agents.code-workspace
+/.claude/
+/.playwright-mcp/
+/.skill-lock.json
+
+# Personal job-search materials
+/cv_edit.py
+/job-applications.md

@@ -1,0 +1,74 @@
+# GitHub Release Notes Configuration
+#
+# Place this file at `.github/release.yml` in your repository to configure
+# automatic release note generation.
+#
+# Usage: When creating a release PR or GitHub release, use the "Generate
+# release notes" feature. GitHub will categorize merged PRs based on their
+# labels using the configuration below.
+
+changelog:
+  exclude:
+    labels:
+      # PRs with these labels won't appear in generated notes
+      - skip-changelog
+      - internal
+      - duplicate
+      - invalid
+
+  categories:
+    - title: 🚀 New Features
+      labels:
+        - feature
+        - enhancement
+        - feat
+
+    - title: 🐛 Bug Fixes
+      labels:
+        - bug
+        - fix
+        - bugfix
+
+    - title: 🔧 Maintenance
+      labels:
+        - chore
+        - refactor
+        - dependencies
+        - dependency-update
+
+    - title: 📚 Documentation
+      labels:
+        - documentation
+        - docs
+
+    - title: ⚡ Performance
+      labels:
+        - performance
+        - perf
+        - optimization
+
+    - title: 🔒 Security
+      labels:
+        - security
+        - vulnerability
+
+    - title: 🎨 Style
+      labels:
+        - style
+        - formatting
+        - ui
+
+    - title: 🧪 Testing
+      labels:
+        - test
+        - testing
+
+    - title: 🏗️ Build & CI
+      labels:
+        - ci
+        - build
+        - deployment
+
+    - title: 📦 Other Changes
+      labels:
+        - "*"
