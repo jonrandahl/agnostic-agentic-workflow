@@ -2,27 +2,40 @@
 
 ## Overview
 
-For complex, architectural, or cascade-sensitive changes, present the proposed
-code **before** implementing it. This catches misunderstandings early, saves
-thrashing, and makes the reasoning transparent.
+Use a review-first preview when seeing the proposed approach before implementation
+would materially help the user assess scope, trade-offs, or impact. A preview is
+a communication aid, not a general approval gate.
 
-## When to Use Review-First
+Keep action authorisation separate from review-first. A preview never grants
+permission to act. Follow the applicable user instructions and tool or platform
+permission rules for every action. Destructive or hard-to-reverse actions,
+external side effects, and actions that cross a security or data boundary need
+explicit authorisation for that action and scope unless the user has already
+clearly authorised it. Do not infer authorisation from silence or from approval
+of a different proposal.
 
-- ✅ Architectural decisions (selector renames, layer reorganisation, refactoring
-  patterns)
-- ✅ CSS cascade fixes or state management logic
-- ✅ Changes affecting multiple files or interconnected systems
-- ✅ User expresses frustration or asks for "brutal honesty" (signals rethinking
-  is needed)
-- ✅ Breaking change to naming conventions, data attributes, or component APIs
-- ✅ Anything that would require reverting if wrong
+## When a Preview Helps
 
-## When to Skip Review-First
+- Architectural decisions or breaking changes with meaningful trade-offs
+- Broad changes across multiple files or interconnected systems
+- Changes whose impact or rollback cost would be difficult to assess from a
+  concise completion report
+- Situations where the user asks to compare or review approaches before choosing
 
-- ⏭️ Trivial fixes (typos, single-line logic, obvious bug corrections)
-- ⏭️ Automated fixes after user approval ("make it so", "fix that", "go ahead")
-- ⏭️ Code samples or examples in chat (no workspace edits)
-- ⏭️ File reads or explorations (gathering context)
+Offer the preview with the scope, affected areas, expected impact, and material
+trade-offs. Ask for a decision only when the user needs to choose an approach or
+the action requires authorisation. If the user has already requested a clear,
+reversible change, implement it without adding an approval step solely because it
+is complex.
+
+## When to Skip a Preview
+
+- Trivial, local, reversible changes
+- A clear implementation request where no material choice remains
+- Code samples or examples in chat that do not change workspace state
+- File reads or exploration that gather context without changing state
+
+Skipping a preview does not bypass action authorisation or other safety rules.
 
 ## The Workflow
 
@@ -55,14 +68,17 @@ Be honest about trade-offs and why this approach is better:
 - "This renames a convention, which affects [these files], but makes [this]
   clearer"
 
-### 4. Wait for Approval
+### 4. Establish the Next Step
 
-User says:
+If the user needs to choose between materially different approaches, ask which
+one they want. If the proposed action requires explicit authorisation, request
+that authorisation for the specific action and scope. Otherwise, continue with
+the requested work. A request to review a proposal is not, by itself,
+authorisation to carry it out.
 
-- "approved" → implement immediately
-- "make it so" → proceed
-- "yes" / "go ahead" → proceed
-- Questions → revise and re-present
+Treat follow-up questions or changed requirements as new information: answer or
+revise the proposal, then proceed only when the request and any required
+authorisation are clear.
 
 ### 5. Implement All Changes Together
 
@@ -77,8 +93,9 @@ Apply changes in this order:
 
 ### 6. Verify & Report
 
-Run get_errors on changed files and confirm they're clean. Report results
-briefly: "✅ All 5 files updated cleanly. No errors."
+Run checks appropriate to the change and the project. Report what was checked,
+what passed or failed, and any unavailable checks or unresolved risks. Do not
+claim a check passed unless it was run.
 
 ## Benefits
 
@@ -101,12 +118,10 @@ User: "This hover state isn't suppressing in embed mode"
 → Root cause: wrong selector matching wrong element
 
 [REVIEW-FIRST]
-"The card selector matches both home-page cards AND pen article pages.
-Let me show you how to rename the article selector so they never match:
-[show diff]
-Approved?"
-
-User: "approved"
+"The card selector matches both home-page cards and pen article pages. I propose
+scoping the article selector to avoid the collision. This affects these files:
+[show scope and diff]. The change is reversible. I’ll proceed with the requested
+fix unless you want a different selector strategy."
 
 [IMPLEMENT]
 → Rename aria-labelledby, remove cascade hack, add new rule
@@ -120,19 +135,18 @@ User: "approved"
 User: "How do I standardise our component prop names?"
 
 [REVIEW-FIRST]
-"I found 12 components using inconsistent prop naming.
-Here's the mapping I'd apply:
+"I found 12 components using inconsistent prop naming. Here's the mapping I
+recommend:
 [show before/after table]
-This will touch these files:
-[list files]
-OK to proceed?"
+This touches these files and introduces a breaking change:
+[list files and impact]. Which naming convention would you choose? I can
+implement it once you ask me to make the change."
 
-User: "looks good"
+User chooses a convention
 
-[IMPLEMENT]
-→ Apply all renames together
-→ Update related tests/docs
-→ Verify
+[AGENT]
+→ Explain the selected convention and confirm the implementation scope
+→ Wait for an implementation request before changing files
 ```
 
 ### Scenario 3: Trivial Fix (Skip Review-First)
@@ -161,20 +175,24 @@ User: "There's a typo in button.css line 42"
 - Focus on the *why*, not the mechanism
 - Avoid "here's my reasoning process" — give conclusions
 
-### Invite Feedback
+### Invite Feedback When a Decision Is Needed
 
-- "Does this approach work for you?" or "Should I proceed?"
-- "Any concerns?" or "Want me to adjust anything?"
-- Make it clear you're waiting before acting
+- Ask a focused question when the user needs to choose an approach or provide
+  required authorisation
+- Do not ask for approval merely to create a pause before a clear, authorised,
+  reversible change
+- State whether you are proceeding or waiting, and why
 
-## Recovery if You Misjudged
+## Recovery if the Change Is Wrong
 
 If you implement first and the user objects:
 
-- **Immediately revert** (don't defend the change)
-- **Ask what went wrong** (fix your understanding)
-- **Present the corrected approach**
-- **Get approval before second attempt**
+- Stop further changes and inspect the objection and current state
+- Preserve user changes and any work that should not be discarded
+- Explain the impact and offer the smallest safe correction
+- Revert only when that is the right correction and it will not discard unrelated
+  or user-owned work
+- Follow the same authorisation boundary before any action that requires it
 
 Example:
 
@@ -182,16 +200,17 @@ Example:
 User: "Wait, this broke X"
 
 [AGENT]
-→ Revert immediately
-→ "I missed that X depends on the old naming. Let me revise..."
-→ [present corrected approach with better context]
-→ "Ready to retry?"
+→ Stop and inspect the current diff and the dependency
+→ "I missed that X depends on the old naming. Reverting the rename would also
+  undo [impact]. I propose [safe correction]."
+→ Proceed with the correction if already requested and authorised; otherwise
+  ask for the needed choice or authorisation
 ```
 
 ## Adoption Notes
 
-- This pattern is lightweight—not a rigid process, just a mindset
-- Use judgment: trivial changes don't need ceremony
+- Use judgment: preview when it improves the user's decision, not as ceremony
+- Keep proposal review distinct from permission to perform an action
 - Adjust for team speed: some teams prefer inline chat snippets, others want
   formal diffs
 - Document exceptions for your team (e.g., "automated tests always OK to fix")
