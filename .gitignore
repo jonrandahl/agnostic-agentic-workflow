@@ -8,3 +8,10 @@
 # Personal job-search materials
 /cv_edit.py
 /job-applications.md
+
+# Skills are installed locally; track only skills maintained in this repository.
+/skills/*
+!/skills/eco-impact-audit/
+!/skills/eco-impact-audit/**
+!/skills/safe-area-audit/
+!/skills/safe-area-audit/**
