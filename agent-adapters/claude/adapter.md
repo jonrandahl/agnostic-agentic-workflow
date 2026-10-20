@@ -1,7 +1,7 @@
 # Claude Adapter — Claude-Specific Policy
 
 This file contains rules and patterns that apply to Claude only. It supplements
-the shared universal guidelines in ~/.agents/guidelines/.
+the shared guidelines in ~/.agents/guidelines/.
 
 ---
 
@@ -18,7 +18,7 @@ in development containers. Gemini in the browser never will.
 
 ## What Comes First
 
-Always read shared universal guidance before this file:
+Always read the shared guidance that applies to the task before this file:
 
 - ~/.agents/guidelines/core.md
 - ~/.agents/guidelines/technical-patterns.md

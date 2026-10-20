@@ -6,7 +6,7 @@ This file points VS Code Copilot to shared agentic guidelines in ~/.agents.
 
 ## Shared Guidelines Location
 
-All universal guidelines are maintained in `~/.agents/guidelines/`:
+Shared guidelines are maintained in `~/.agents/guidelines/`:
 
 - **Core guidelines**: `~/.agents/guidelines/core.md`
   - Identity & Positioning
