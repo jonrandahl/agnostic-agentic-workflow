@@ -43,7 +43,7 @@ CORE GUIDELINES (from ~/.agents/guidelines/core.md):
 - Punctuation: Oxford comma. No excessive emphasis.
 - Structure: Concise sentences. What and why, not how. Lead with importance.
 - Version Control: Conventional Commits (type(scope): subject). Describe what/why, not implementation.
-- AI-Assisted Work: Don't assume. Surface tradeoffs. Minimum code. Define success criteria. Review all output before using.
+- AI-Assisted Work: Make material assumptions visible and surface trade-offs. Proceed on low-risk, reversible details; ask when ambiguity affects the outcome, scope, safety, permissions, or external side effects. Use minimum code, define success criteria, and review output before using.
 
 TECHNICAL PATTERNS (from ~/.agents/guidelines/technical-patterns.md):
 - Dark themes: Use prefers-color-scheme with explicit token overrides in base.css. Verify contrast ratios. Document strategy inline.

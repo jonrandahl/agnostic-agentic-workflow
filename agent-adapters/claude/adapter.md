@@ -67,7 +67,9 @@ When responding to requests, apply these principles:
 
 - **Surface tradeoffs clearly.** Do not hide complexity or uncertainty.
 - **Prefer minimum viable change.** Do not speculate or over-engineer.
-- **Avoid speculative implementation.** Ask rather than assume.
+- **Make material assumptions visible.** Proceed on low-risk, reversible details;
+  ask when ambiguity could change the outcome, scope, safety, permissions, or
+  external side effects.
 - **Verify outcomes before completion.** Loop until success criteria are met.
 
 ---
