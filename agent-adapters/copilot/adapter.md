@@ -42,7 +42,8 @@ Shared guidelines are maintained in `~/.agents/guidelines/`:
   - Linkable fields such as homepage, repository, and bugs
   - Licence and packageManager guidance for pnpm-based projects
 
-**Apply these shared guidelines to all Copilot work in VS Code.**
+**Apply relevant shared guidelines to Copilot work in VS Code, following the
+user's task-specific preferences and project conventions.**
 
 ---
 

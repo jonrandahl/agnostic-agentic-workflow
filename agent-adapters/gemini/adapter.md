@@ -33,7 +33,8 @@ Paste this at the start of your Gemini session:
 ```
 I work with a shared set of agentic guidelines maintained in ~/.agents/guidelines/.
 
-Apply these principles to our conversation:
+Apply the relevant principles below to this conversation, following task-specific
+preferences and project conventions where they affect style or format:
 
 CORE GUIDELINES (from ~/.agents/guidelines/core.md):
 - I am a Senior T-shaped Front-End Engineer (HTML, CSS, JS, UX/A11y depth; broad full-stack knowledge)
@@ -80,7 +81,8 @@ REMEMBER:
 - Describe what and why, not how
 - Always review and own AI-generated output
 - Never claim AI work as independently produced where distinction matters
-- Apply these across all projects
+- Apply relevant defaults across projects; follow task-specific requests and
+  project conventions
 ```
 
 ---
