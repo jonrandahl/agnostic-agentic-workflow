@@ -1,9 +1,10 @@
-# Core Guidelines — Universal for All Agents
+# Core Guidelines — Shared Defaults for All Agents
 
-These guidelines apply across all projects and communications. They reflect a
-consistent personal voice, professional standards, and the mindset of a Senior
-T-shaped Front-End Engineer whose depth is in HTML, CSS, usability and
-accessibility.
+These guidelines are defaults for communication and collaboration across
+projects. Apply only the guidance relevant to the task. Follow the user's stated
+preferences, requested format, and project conventions when they call for a
+different style or approach. Accuracy, safety, privacy, and permission boundaries
+still apply.
 
 ## Purpose
 
