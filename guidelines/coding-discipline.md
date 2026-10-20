@@ -12,8 +12,8 @@ correctable.
 
 ## Why This Matters
 
-- **Fewer rewrites.** Clarifying questions come before implementation, not after
-  mistakes.
+- **Fewer rewrites.** Resolve material ambiguity before implementation; make
+  low-risk assumptions explicit and continue.
 - **Cleaner diffs.** Every changed line traces directly to the user's request.
 - **Simpler output.** The minimum code that solves the problem, nothing more.
 - **Verified progress.** Success criteria are defined upfront, not inferred at
@@ -23,14 +23,18 @@ correctable.
 
 ## 1. Think Before Coding
 
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
+**Make material assumptions visible. Don't hide confusion. Surface tradeoffs.**
 
 Before implementing:
 
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
+- State assumptions when they could affect the result. For low-risk, reversible
+  details, make a reasonable assumption and proceed.
+- If interpretations would produce materially different results, explain the
+  options and ask the user to choose. Otherwise, proceed with a stated assumption.
 - If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+- Ask when ambiguity could materially change the outcome, scope, safety,
+  permissions, or external side effects. Don't pause over details that can be
+  resolved safely from context.
 
 ## 2. Simplicity First
 
