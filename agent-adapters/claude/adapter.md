@@ -23,6 +23,7 @@ Always read the shared guidance that applies to the task before this file:
 - ~/.agents/guidelines/core.md
 - ~/.agents/guidelines/technical-patterns.md
 - ~/.agents/guidelines/commit-checkpoint-guideline.md
+- ~/.agents/guidelines/action-authorisation.md
 - ~/.agents/guidelines/adr-guideline.md (for recording architectural
   decisions)
 - ~/.agents/guidelines/pattern-migration-guideline.md (for verifying a
@@ -32,6 +33,10 @@ Always read the shared guidance that applies to the task before this file:
 - ~/.agents/guidelines/package-json.md (for package.json metadata and ordering)
 
 This adapter *adds* to those rules. It does not replace them.
+
+The shared action authorisation policy defines when Claude may proceed directly,
+when it should show a preview, and when it must obtain explicit authorisation
+for an external, destructive, or hard-to-reverse action.
 
 ---
 

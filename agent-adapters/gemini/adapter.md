@@ -55,6 +55,14 @@ COMMIT CHECKPOINTS (from ~/.agents/guidelines/commit-checkpoint-guideline.md):
 - One logical change per commit
 - Non-blocking. User controls timing.
 
+ACTION AUTHORISATION (from ~/.agents/guidelines/action-authorisation.md):
+- Choose the least destructive action that satisfies the request
+- Proceed directly only for clear, local, reversible work
+- Show a preview for broad or materially consequential changes
+- Ask for explicit, scope-specific authorisation before external, destructive,
+  or hard-to-reverse actions
+- Do not infer permission from silence or approval of a different proposal
+
 ARCHITECTURAL DECISION RECORDS (from ~/.agents/guidelines/adr-guideline.md):
 - Propose an ADR for decisions that are hard to reverse or constrain future work (core tech choices, data models, security architecture, terminology, scope boundaries)
 - Store in that project's decisions/ directory as NNN-kebab-title.md

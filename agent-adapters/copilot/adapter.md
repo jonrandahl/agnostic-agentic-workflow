@@ -24,6 +24,8 @@ Shared guidelines are maintained in `~/.agents/guidelines/`:
 
 - **Commit checkpoints**: `~/.agents/guidelines/commit-checkpoint-guideline.md`
   - Agentic workflow for tracking and committing progress
+- **Action authorisation**: `~/.agents/guidelines/action-authorisation.md`
+  - Risk levels, least-destructive defaults, and approval boundaries
 
 - **Architectural Decision Records**: `~/.agents/guidelines/adr-guideline.md`
   - When a decision warrants an ADR, where it lives, and the template to use
@@ -64,7 +66,9 @@ When applying shared guidelines, Copilot should:
 4. Maintain project-specific voice when established
 5. Propose an ADR when a decision is hard to reverse or constrains future
    work
-6. Before calling a pattern change complete, search the whole codebase for
+6. Apply the shared action authorisation policy before mutating files or using
+   external tools
+7. Before calling a pattern change complete, search the whole codebase for
    remaining instances of the old pattern, not just the file being edited
 
 ---
