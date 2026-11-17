@@ -88,6 +88,30 @@ For multi-step tasks, state a brief plan:
 Strong success criteria let you loop independently. Weak criteria ("make it
 work") require constant clarification.
 
+## 5. Verification
+
+Choose evidence that matches the change and its risk rather than applying every
+check to every change:
+
+- When runtime behaviour matters, run the real app and exercise the changed
+  flow where practical. Use end-to-end tests for important user journeys when
+  they add stronger evidence; retain focused tests for faster, narrower checks.
+- Use property-based tests when broad input ranges or invariants make them
+  useful. For rewrites and migrations, compare old and new behaviour against
+  the same representative cases and identify intentional differences.
+- Protect the validation signal. Do not weaken, skip, or remove a check just to
+  get a pass. When behaviour changes require test or check updates, preserve
+  assertions for unchanged requirements and review those updates as part of
+  the change.
+- Run the cheapest relevant checks first, then broader or slower checks. Do not
+  retry a flaky check just to obtain a pass: diagnose and fix it, or replace or
+  remove it deliberately while preserving any still-needed coverage.
+- Stop after three unsuccessful repair attempts for the same failure and
+  report what remains unresolved.
+- When a failure exposes a reusable process gap, add or revise a focused rule
+  in the right place. Avoid turning one-off incidents into global guidance,
+  and remove rules that are stale or superseded.
+
 ---
 
-*Last updated: May 2026*
+*Last updated: November 2026*
