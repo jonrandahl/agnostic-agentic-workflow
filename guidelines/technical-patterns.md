@@ -24,6 +24,15 @@ code review faster.
 
 ---
 
+## Structured data discovery
+
+For published content and external data representations, apply the
+[structured data guideline](structured-data-guideline.md) and use the
+[schema-discovery skill](../skills/schema-discovery/SKILL.md) when its
+assessment triggers apply.
+
+---
+
 ## Dark Theme Implementation
 
 Convention established: WCAG Contrast Checker, May 2026.
